@@ -2,7 +2,6 @@ import os,sys
 
 # All functions return -1 on fail
 
-
 # System Related
 def os_check():
 	# Returns os type as string
@@ -107,5 +106,37 @@ def raw_f_as_list(filename):
 	except Exception, e:
 		print '[ ! ] in f_getlist',e
 		return -1
+
+# SMTP
+def send_sms(number,msg,username,password):
+	import smtplib
+	server = smtplib.SMTP( "smtp.gmail.com", 587 )
+	server.starttls()
+	# gmail credentials
+	server.login( username, password )
+	server.sendmail( username, number, msg)
+	server.quit()
+	pass
+
+def send_mail(fromaddr,toaddr,subject,body,username,password):
+	from email.MIMEMultipart import MIMEMultipart
+	from email.MIMEText import MIMEText
+
+	msg = MIMEMultipart()
+	msg['From']    = fromaddr
+	msg['To']      = toaddr
+	msg['Subject'] = subject
+	msg.attach(MIMEText(body, 'plain'))
+
+	import smtplib
+	server = smtplib.SMTP('smtp.gmail.com', 587)
+	server.ehlo()
+	server.starttls()
+	server.ehlo()
+	# gmail credentials
+	server.login(username, password)
+	text = msg.as_string()
+	server.sendmail(fromaddr, toaddr, text)
+
 
 print raw_f_as_list('test.txt')
