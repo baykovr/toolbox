@@ -46,6 +46,9 @@ def cmd(command,suppress):
 	except Exception as e:
 		print '[ ! ] in cmd',e
 		return -1
+		
+def pipe_cmd(command):
+	return os.popen(command).read()
 
 # File I/O
 

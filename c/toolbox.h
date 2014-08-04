@@ -15,7 +15,7 @@ int syspipe(char* cmd)
 	}
 }
 
-// Print to hex 
+// Print to hex
 void printh(char* str)
 {
     int i = 0;
