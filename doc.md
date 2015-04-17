@@ -1,6 +1,6 @@
 ### Utilities
 
-**git-author-comm**           
+**git-author-comm.py**           
 Compare two git repositories, display authors which have contributed to both.
 
 
