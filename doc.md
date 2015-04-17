@@ -1,6 +1,7 @@
 ### Utilities
 
-    git-author-comm            # Compare two git repositories, display authors which have contributed to both.
+**git-author-comm**           
+Compare two git repositories, display authors which have contributed to both.
 
 
 ### Function List
