@@ -6,8 +6,8 @@
 import os,sys
 
 def usage():
-	print 'Show authors which appear in two git repositories.'
-	print 'python2 git-author-comm.py [path-to-git-repo] [path-to-git-repo]'
+	print 'Show authors which appear in two local git repositories.'
+	print 'python2 git-author-comm.py [path-to-local-git-repo] [path-to-local-git-repo]'
 
 def sysout(command):
 	return os.popen(command).read()
