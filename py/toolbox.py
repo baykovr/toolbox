@@ -3,24 +3,19 @@ import os,sys
 # All functions return -1 on fail
 
 # System Related
-def os_check():
-	# Returns os type as string
-	# mainly concerned with win/linux
-	# otherwise returns unknown
-	# add your own others.
+def getos():
+	# get the os and do basic parsing
 	try:
 		os = 'unknown'
 		if sys.platform == 'win32' or sys.platform == 'win64':
 			os = 'win'
-		elif sys.platform == "linux" or sys.platform == "cygwin":
+		elif sys.platform == "linux":
 			os = 'linux'
 		else:
-			pass
-			# uncomment to return actual os
 			os = sys.platform
 		return os
 	except Exception as e:
-		print '[ ! ] in os_check',e
+		print '[erro] in os_check',e
 		return -1
 
 def cmd(command,suppress):
@@ -32,19 +27,20 @@ def cmd(command,suppress):
 	# by redirecting stdout/stderr
 	try:
 		redir_method = ''
+		os = getos()
 		if suppress:
-			if os_check() == 'win':
+			if os == 'win':
 				redir_method = '>nul 2>&1'
-			elif os_check() == 'linux':
+			elif os == 'linux' or os == 'cygwin':
 				redir_method = '&>/dev/null'
 			else:
-				print '[ ! ] in cmd, unknown os cannot redirect stdout/stderr'
+				print '[warn] io redirection for',os,'unimplemented.'
 
 		command = command+redir_method
 		return os.system(command)
 	
 	except Exception as e:
-		print '[ ! ] in cmd',e
+		print '[erro] in cmd',e
 		return -1
 		
 def pipe_cmd(command):
@@ -57,19 +53,16 @@ def f_addln(filename,line):
 	# Detects win/linux newline char for you.
 	try:
 		fp = open(filename,"a")
-		
 		if os_check() == 'win':
 			line = line + '\r\n'
-
 		fp.write(line)
-		
 		fp.close()
 		return 0
 	except Exception, e:
-		print '[ ! ] in f_addln',e
+		print '[erro] in f_addln',e
 		return -1
 
-def raw_f_addln(filename,line):
+def f_addln_raw(filename,line):
 	#
 	# Don't forget to add \r\n in windows
 	# ex'line\r\n'
@@ -79,7 +72,7 @@ def raw_f_addln(filename,line):
 		fp.close()
 		return 0
 	except Exception, e:
-		print '[ ! ] in f_addln',e
+		print '[erro] in f_addln',e
 		return -1
 
 def f_as_list(filename):
@@ -94,10 +87,10 @@ def f_as_list(filename):
 			line_list.append(line)
 		return line_list
 	except Exception, e:
-		print '[ ! ] in f_getlist',e
+		print '[erro] in f_getlist',e
 		return -1
 
-def raw_f_as_list(filename):
+def f_as_list_raw(filename):
 	# Will not strip newline delimeter
 	# Get exact contents
 	try:
@@ -107,7 +100,7 @@ def raw_f_as_list(filename):
 			line_list.append(line)
 		return line_list
 	except Exception, e:
-		print '[ ! ] in f_getlist',e
+		print '[erro] in f_getlist',e
 		return -1
 
 # SMTP
@@ -140,6 +133,3 @@ def send_mail(fromaddr,toaddr,subject,body,username,password):
 	server.login(username, password)
 	text = msg.as_string()
 	server.sendmail(fromaddr, toaddr, text)
-
-
-print raw_f_as_list('test.txt')
