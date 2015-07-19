@@ -1,13 +1,14 @@
-#!/usr/bin/env python 
-
-# Display authors which appear as contributors in both (two) repositories.
-
+#!/usr/bin/env python2
+# Robert Baykov 07.17.15
+# Compare authors of two (local) git repositories.
+# Returns authors which appear in both to stdout new line seperated, 
 
 import os,sys
 
 def usage():
-	print 'Show authors which appear in two local git repositories.'
-	print 'python2 git-author-comm.py [path-to-local-git-repo] [path-to-local-git-repo]'
+	print 'Show authors which appear in two local git repos.'
+        print '\t ./comm-git-authors.py [repo-dir] [repo-dir]'
+        print '\t returns list of authors (newline seperated)'
 
 def sysout(command):
 	return os.popen(command).read()
@@ -34,7 +35,7 @@ if __name__ == "__main__":
 		if len(authors) == 0:
 			print 'There are no matches.'
 		else:
-			print 'The folowing appear in both repositories: '
+                	#print 'The folowing appear in both repositories: '
 			for author in authors:
 				print author
 					
