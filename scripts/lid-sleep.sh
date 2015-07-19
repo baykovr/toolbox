@@ -1,4 +1,5 @@
 #!/bin/bash
+# Robert A. Baykov <baykovr@gmail.com>
 # lid-sleep : set systemd lid close behavior
 
 conf_file="/etc/systemd/logind.conf"

@@ -1,7 +1,7 @@
 #!/bin/bash
 # This is basically just wiki link below:
 # https://wiki.archlinux.org/index.php/Internet_sharing
-# Robert Baykov 
+# Robert A. Baykov <baykovr@gmail.com>
 # Last Edit: 07.19.15
 
 DEPENDENCIES=( sysctl ip iptables )

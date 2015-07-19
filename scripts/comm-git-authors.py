@@ -1,5 +1,5 @@
 #!/usr/bin/env python2
-# Robert Baykov 07.17.15
+# Robert A. Baykov <baykovr@gmail.com>
 # Compare authors of two (local) git repositories.
 # Returns authors which appear in both to stdout new line seperated, 
 
