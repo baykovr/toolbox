@@ -93,7 +93,7 @@ function setup_sharing()
 	echo -e '[ # ] \t ip addr add 192.168.111.XXX/24 dev eth0' 
 	echo -e '[ # ] \t ip link set up dev eth0'
 	echo -e '[ # ] \t ip route add default via 192.168.111.100 dev eth0'
-	echo -e '[ # ] \t edit /ets/resolv.conf to add DNS (i.e.append nameserver 8.8.8.8 to use Google DNS)'
+	echo -e '[ # ] \t edit /etc/resolv.conf to add DNS (i.e.append nameserver 8.8.8.8 to use Google DNS)'
 }
 
 function main()
