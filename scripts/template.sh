@@ -46,7 +46,7 @@ function argparse()
 
 function require_root()
 {
-	if [ "$UID" -ne "0" ] ; then
+	if [ "$EUID" -ne "0" ] ; then
 		echo "[ ! ] script requires root, aborting."
 		exit -1
 	fi
