@@ -7,9 +7,9 @@ A collection of scripts and snippets.
 
 ###### scripts
 
-chtitle.sh
+chtitle/chtitle.sh
      
-     change xterm window title
+     changes xterminal's window title
 
 comm-git-authors.py
      
@@ -18,12 +18,13 @@ comm-git-authors.py
 lid-sleep.sh
 
      change systemd lid shut behavior in /etc/systemd/logind.conf
-     using sed.
+     (requires X11 session restart)
      
 netiface-share.sh
 
-     configure two network interfaces to share internet connection,
-     allowing external client to utilize shared interface.
+     configure two network interfaces to (share) forward an internet connection,
+     allowing an additional device to utilize the connection. 
+     (i.e. a laptop connected over wireless shares internet over wired with a second laptop)
      
 robust-wifi.sh
 
