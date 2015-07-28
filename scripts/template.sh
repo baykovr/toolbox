@@ -2,6 +2,13 @@
 # Robert A. Baykov <baykovr@gmail.com>
 # Template for bash scripts.
 
+# echo "# arguments called with ---->  ${@}     "
+# echo "# \$1 ---------------------->  $1       "
+# echo "# \$2 ---------------------->  $2       "
+# echo "# path to me --------------->  ${0}     "
+# echo "# parent path -------------->  ${0%/*}  "
+# echo "# my name ------------------>  ${0##*/} "
+# cite [1]
 
 DEPENDENCIES=( one two three )
 
@@ -60,4 +67,6 @@ main "$@"
 # Side notes:
 # if you need to handle arguments from command line, pass them using "$@"
 # 	alternatively use the argparse getops functions.
-# arg count can be accessed via $#
+# argument count can be accessed via $#
+# interstingly enough, it does not include the program itself
+# i.e. "./script arg1 arg2" produces an argument count of 2, not 3 as would in C style argc

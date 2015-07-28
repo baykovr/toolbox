@@ -1,5 +1,5 @@
 #!/bin/bash
-# This is basically just wiki link below:
+# This is basically just the wiki link below:
 # https://wiki.archlinux.org/index.php/Internet_sharing
 # Robert A. Baykov <baykovr@gmail.com>
 # Last Edit: 07.19.15
@@ -12,7 +12,7 @@ function usage()
 {
 	echo -e "netiface-share -i [internet-interface0] -c [client-interface1]"
 	echo -e "\t" " -i : network interface connected to internet       i.e. eth0"
-	echo -e "\t" " -c : network interface connected to client machine i.e. eth1"
+	echo -e "\t" " -c : network interface connected to client machine i.e. eth1" 
 	exit 0
 }
 
