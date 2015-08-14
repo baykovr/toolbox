@@ -3,11 +3,13 @@
 import os,sys
 
 # syscalls
+
 # an alias, writes to stdout
 def cmd(command):
 	os.system(command)
+
 # returns stdout
-def cmd_pipe(comand):
+def pcmd(comand):
     return os.popen(command).read()
 
 # To suppres output append to command prior to sys call

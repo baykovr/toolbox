@@ -14,8 +14,6 @@
 # 2 : unsupported terminal
 # 3 : unsupported shell
 
-DESCRIPTION="a title changer"
-
 # reset getopts
 OPTIND=1    
 FORCE=0
@@ -25,7 +23,7 @@ TITLE=""
 function usage()
 {
 	# ${0##*/} : this scripts name (see the template for details)
-	echo ${0##*/} : $DESCRIPTION
+	echo ${0##*/} : "a title changer"
 	echo "Usage"
 	echo -e "\t" ${0##*/} "-h : display usage."
 	echo -e "\t" ${0##*/} "-t [title] : set the title"

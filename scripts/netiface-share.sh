@@ -10,6 +10,7 @@ inet_interface='' # internet connected interface
 cnet_interface='' # client connected interface
 function usage()
 {
+	echo ${0##*/} : "share your internet accross interfaces."
 	echo -e "netiface-share -i [internet-interface0] -c [client-interface1]"
 	echo -e "\t" " -i : network interface connected to internet       i.e. eth0"
 	echo -e "\t" " -c : network interface connected to client machine i.e. eth1" 

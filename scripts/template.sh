@@ -14,7 +14,10 @@ DEPENDENCIES=( one two three )
 
 function usage()
 {
-	# echo usage of script.
+	# ${0##*/} : this scripts name (see the template for details)
+	
+	echo ${0##*/} : "a template"
+	echo "Usage"
 	exit 0
 }
 
