@@ -1,3 +1,6 @@
+#ifndef TOOLBOX_H
+#define TOOLBOX_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -9,7 +12,8 @@ int syspipe(char* cmd)
   if (!pipe){
 		fprintf(stderr, "%s\n", strerror(errno));
 		return errno;
-	}else{
+	}
+	else{
 		pclose(pipe);
 		return 0;
 	}
@@ -28,3 +32,4 @@ void printh(char* str)
         i++;
      }
 }
+#endif
