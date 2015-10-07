@@ -5,20 +5,21 @@ import os,sys
 # syscalls
 
 # an alias, writes to stdout
+# @ret : nothing
 def cmd(command):
 	os.system(command)
 
-# returns stdout
-def pcmd(comand):
-    return os.popen(command).read()
+# @ret : string
+def pcmd(cmd):
+	return os.popen(cmd).read()
 
-# To suppres output append to command prior to sys call
-	# on win   '>nul 2>&1'
-	# on linux '&>/dev/null'
+# note : To suppres output append to command prior to sys call
+# 	on win   '>nul 2>&1'
+#	on linux '&>/dev/null'
 
 # File I/O
-# Note: uses os_check
-# Detects win/linux newline char for you.
+# Note: uses os_check.
+# 	Detects win/linux newline char for you.
 def f_addln(filename,line):
 	try:
 		fp = open(filename,"a")
@@ -30,8 +31,8 @@ def f_addln(filename,line):
 	except Exception, e:
 		print '[erro] in f_addln',e
 
-# Don't forget to add \r\n in windows
-# ex'line\r\n'
+# Don't forget to add \r\n in windows.
+# ex'line\r\n'.
 def f_addln_raw(filename,line):
 	try:
 		fp = open(filename,"a")
@@ -41,10 +42,9 @@ def f_addln_raw(filename,line):
 	except Exception, e:
 		print '[erro] in f_addln',e
 
-# Note: will strip out new line characters
-# Return file contents as a list
-# each line is a new item
-def f_as_list(filename): 
+# @ret : [string] : file contents as a list, strips new line characters.
+# Note: will strip out new line characters.
+def flist(filename): 
 	try:
 		line_list = []
 		fp = open(filename)
@@ -55,9 +55,8 @@ def f_as_list(filename):
 	except Exception, e:
 		print '[erro] in f_getlist',e
 
-# Will not strip newline delimeter
-# Get exact contents
-def f_as_list_raw(filename):
+# @ret : [string] : file contents as a list, retains new line characters.
+def flist_raw(filename):
 	try:
 		line_list = []
 		fp = open(filename)
@@ -66,6 +65,15 @@ def f_as_list_raw(filename):
 		return line_list
 	except Exception, e:
 		print '[erro] in f_getlist',e
+
+# @logfile_path : string : name of destiantion logfile, (absolute or relative path).
+# @append_mgs : string : contents to write to logfile and stdout.
+def log(logfile_path,append_msg):
+	# log to file
+	with open(LOGFILE, 'a') as f:
+		f.write(append_msg+'\n')
+	# log to stdout
+	print append_ms
 
 # SMTP
 def send_sms(number,msg,username,password):
