@@ -43,8 +43,17 @@ function check_dependencies()
 
 function argparse()
 {
-	while getopts "h?" opt; do
+	while getopts ":-:h?" opt; do
 		case "$opt" in
+			-) 
+				case "${OPTARG}" in
+					verbose) echo "verbose" ;;
+					*)  
+						if [ "$OPTERR" = 1 ] && [ "${optspec:0:1}" != ":" ]; then 
+							echo "unknown option $OPTARG"
+							usage
+						fi ;;
+				esac  ;;
 			h|\?) usage "$@" ;;
 		esac
 	done
