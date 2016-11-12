@@ -9,7 +9,9 @@
 # echo "# parent path -------------->  ${0%/*}  "
 # echo "# my name ------------------>  ${0##*/} "
 # cite [1]
-
+# 
+# You can processes all but n arguments with
+#  ${@:n} e.g. echo "${@:2}" # will echo all but first arg 
 DEPENDENCIES=( one two three )
 
 function usage()
@@ -18,6 +20,7 @@ function usage()
 	
 	echo ${0##*/} : "a template"
 	echo "Usage"
+	echo -e '\t' "something"
 	exit 0
 }
 
@@ -40,11 +43,36 @@ function check_dependencies()
 
 function argparse()
 {
-	while getopts "h?" opt; do
+	while getopts ":-:h?" opt; do
 		case "$opt" in
+			-) 
+				case "${OPTARG}" in
+					verbose) echo "verbose" ;;
+					*)  
+						if [ "$OPTERR" = 1 ] && [ "${optspec:0:1}" != ":" ]; then 
+							echo "unknown option $OPTARG"
+							usage
+						fi ;;
+				esac  ;;
 			h|\?) usage "$@" ;;
 		esac
 	done
+}
+
+function back_dir()
+{
+	# Since the backup directory is not under version
+	# control, create it if its missing.
+	if [ ! -d "$BACKUP_DIR" ]; then
+		mkdir -p $BACKUP_DIR
+	fi
+
+	DATE=`date +%m-%d-%Y-%H-%M-%S`
+	FILENAME="backup-"$DATE".tar.gz"
+	echo "Saving to : " $FILENAME
+	# use --ignore-failed-read after tar if you do not have permission to some folders
+	# otherwise all of tar will fail.
+	tar -cvzf ../target/$FILENAME $SITE_ROOT/* 
 }
 
 function require_root()
