@@ -42,6 +42,17 @@ def f_addln_raw(filename,line):
 	except Exception, e:
 		print '[erro] in f_addln',e
 
+def listf(lst,filename):
+	try:
+		fp = open(filename,"w")
+		for item in lst:
+			fp.write(item+'\n')
+		fp.close()
+	except Exception, e:
+		print 'error in listf',e
+
+
+
 # @ret : [string] : file contents as a list, strips new line characters.
 # Note: will strip out new line characters.
 def flist(filename): 
