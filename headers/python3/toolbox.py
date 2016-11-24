@@ -34,8 +34,8 @@ def f_addln(filename,line):
 		fp.write(line)
 		fp.close()
 		return 0
-	except Exception, e:
-		print '[erro] in f_addln',e
+	except Exception as e:
+		print('[erro] in f_addln',e)
 
 # Don't forget to add \r\n in windows.
 # ex'line\r\n'.
@@ -45,29 +45,15 @@ def f_addln_raw(filename,line):
 		fp.write(line)
 		fp.close()
 		return 0
-	except Exception, e:
-		print '[erro] in f_addln',e
+	except Exception as e:
+		print('[erro] in f_addln',e)
 
-<<<<<<< HEAD
-def listf(lst,filename):
-	try:
-		fp = open(filename,"w")
-		for item in lst:
-			fp.write(item+'\n')
-		fp.close()
-	except Exception, e:
-		print 'error in listf',e
-
-
-
-=======
 def fstring(filename):
 	content = ''
 	with open (filename, "r") as fp:
 		content=fp.read().replace('\n', '')
 	return content
 	
->>>>>>> cbf811160b9798cb283cba6a0f1c716ebed08f9c
 # @ret : [string] : file contents as a list, strips new line characters.
 # Note: will strip out new line characters.
 def flist(filename): 
@@ -78,8 +64,8 @@ def flist(filename):
 			line = line.strip('\r\n\t\0')
 			line_list.append(line)
 		return line_list
-	except Exception, e:
-		print '[erro] in flist',e
+	except Exception as e:
+		print('[erro] in flist',e)
 
 # @ret : [string] : file contents as a list, retains new line characters.
 def flist_raw(filename):
@@ -89,8 +75,8 @@ def flist_raw(filename):
 		for line in fp:
 			line_list.append(line)
 		return line_list
-	except Exception, e:
-		print '[erro] in flist_raw',e
+	except Exception as e:
+		print('[erro] in flist_raw',e)
 
 # @logfile_path : string : name of destiantion logfile, (absolute or relative path).
 # @append_mgs : string : contents to write to logfile and stdout.
@@ -130,17 +116,3 @@ def send_mail(fromaddr,toaddr,subject,body,username,password):
 	server.login(username, password)
 	text = msg.as_string()
 	server.sendmail(fromaddr, toaddr, text)
-
-# Templates
-# def os_template():
-# 	try:
-# 		os = 'unknown'
-# 		if sys.platform == 'win32' or sys.platform == 'win64':
-# 			os = 'win'
-# 		elif sys.platform == "linux":
-# 			os = 'linux'
-# 		else:
-# 			os = sys.platform
-# 		return os
-# 	except Exception as e:
-# 		print '[erro] in os_check',e
